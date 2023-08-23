@@ -1,5 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
+import Providers from '@/redux/provider'
 
 export const metadata: Metadata = {
   title: 'FOODS',
@@ -18,7 +19,11 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/FOOD.ico" />
       </head>
-      <body>{children}</body>
+      <body>
+      <Providers>
+        {children}
+      </Providers>
+      </body>
     </html>
   )
 }
