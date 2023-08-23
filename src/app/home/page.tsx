@@ -9,6 +9,7 @@ import { getRecipes } from '@/redux/Features/recipesSlice';
 import { selectRecipes } from "@/redux/Features/recipesSlice";
 import { RootState, Appdispatch } from '@/redux/store';
 import { Montserrat } from "next/font/google";
+import { getDiets } from '@/redux/Features/dietsSlice';
 
 const montserrat = Montserrat({
     subsets: ["latin"],
@@ -21,11 +22,14 @@ const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector;
 const Home = () => {
     const dispatch: Appdispatch = useDispatch()
     const recipes = useSelector((state: RootState) => state.recipe.recipes)
+    const diets = useSelector((state: RootState) => state.diet.diets)
 
     useEffect(()=>{
         dispatch(getRecipes())
+        dispatch(getDiets())
     },[dispatch])
 
+    console.log(diets);
     
 
     return (
